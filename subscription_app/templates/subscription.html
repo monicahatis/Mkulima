@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" lang="en" xmlns="http://www.w3.org/1999/xhtml" content="width=device-width, initial-scale=1">
+    <style>
+
+    </style>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'subscription.css' %}" />
+</head>
+
+<body>
+
+    <h3>Subscription form</h3>
+
+    <div class="container">
+        <form method="post">
+            {% csrf_token %} {{form}}
+            <input type="submit" value="Submit">
+        </form>
+    </div>
+
+</body>
+
+</html>

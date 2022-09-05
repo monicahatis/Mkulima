@@ -1,0 +1,26 @@
+{% extends 'warehouse/layout.html' %}
+{% block content %}
+  {% for upload in warehouses %}
+ 
+  <div class="col-md-4 col-xm-6 col-xm-6">
+      <div class="card p-4">
+          <div class="card-header">{{upload.warehousename}}</div>
+          <div class="card-img-top">
+                  <img class="img-fluid" src="{{upload.image.url}}">
+          </div>
+          <p> <b>Warehouse Name</b> {{upload.warehousename}}</p>
+          <p> <b>Location</b> {{upload.location}}</p>
+          <p><b>Storage Fee</b> {{upload.storagefee}}</p>
+          <div class="row">
+            <div class="col-sm-2">
+              <a href="details_warehouse/{{ upload.id }}"><button class="btn btn-outline-dark">Details</button></a>
+            </div>
+          
+          </div>
+      </div>
+  </div>
+
+  
+  {% endfor %}
+
+{% endblock %}

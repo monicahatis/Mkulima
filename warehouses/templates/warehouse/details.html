@@ -1,0 +1,27 @@
+{% extends "warehouse/index.html" %}
+
+{% block content %}
+<div class="row">
+   
+    <div class="col-md-4 col-xm-6 col-sm-6">
+        <div class="card">
+            <div class="card-header">{{warehouse.warehousename}}</div>
+            <div class="card-img-top">
+                    <img class="img-fluid" src="{{warehouse.image.url}}">
+            </div>
+            <p><b>Warehouse Name</b> {{warehouse.warehousename}}</p>
+            <p><b>Location</b> {{warehouse.location}}</p>
+            <p><b>Storage Fee</b> {{warehouse.storagefee}}</p>
+            <p><b>Capacity</b> {{warehouse.capacity}}</p>
+            <p><b>Description</b> {{warehouse.desription}} </p>
+            <p><b>Contact</b> {{warehouse.contacts }} </p> 
+            <p><b>Email</b> {{user.email }} </p>
+        </div>
+    </div>
+  
+    
+    
+    
+    </div>
+
+{% endblock %}

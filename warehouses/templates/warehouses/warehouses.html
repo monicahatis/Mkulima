@@ -1,0 +1,75 @@
+{% extends 'users/base.html' %}
+<title>
+    {% block title %} Warehouses {% endblock title%}
+</title> {% block content %}
+<div class="row">
+    <div class="col-md-10">
+
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="#">Warehouse</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Warehouses</li>
+            </ol>
+        </nav>
+
+    </div>
+    <div class="col-md-10">
+
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="{% url 'add-warehouse' %}">Add Warehouse</a></li>
+            </ol>
+        </nav>
+
+    </div>
+</div>
+<div class="row">
+    {% for upload in warehouses %}
+
+    <div class="col-4">
+        <div class="card p-4 mb-3" style="min-height: 420px;">
+            <div class="card-header">{{upload.warehousename}}</div>
+            <div class="card-img-top">
+                <img class="img-fluid" style="min-height: 200px;" src="{{upload.image.url}}">
+            </div>
+            <div class="row mt-3">
+                <div class="col-md-12">
+                    <span class="font-weight-bold">Warehouse Name: </span>
+
+                    <span>{{upload.warehousename}}</span>
+                </div>
+            </div>
+            <div class="row mt-3">
+                <div class="col-md-12">
+                    <span class="font-weight-bold">Location: </span>
+
+                    <span>{{upload.location}}</span>
+                </div>
+            </div>
+            <div class="row mt-3">
+                <div class="col-md-12">
+                    <span class="font-weight-bold">Storage Fee: </span>
+
+                    <span>{{upload.storagefee}}</span>
+                </div>
+            </div>
+            <div class="row mt-3">
+                <div class="col-2">
+                    <a href="{% url 'details-warehouse' upload.id %}"><button class="btn btn-outline-dark">Details</button></a>
+                </div>
+
+            </div>
+
+            <div class="row mt-3">
+                {% if request.user == upload.user %}
+                <div class="col-10">
+                    <a href=""><button class="btn btn-outline-dark">My Warehouses</button></a>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+
+
+    {% endfor %}</div>
+{% endblock %}

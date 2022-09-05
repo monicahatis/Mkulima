@@ -1,0 +1,52 @@
+{% extends 'users/base.html' %}
+<title>
+    {% block title %} Warehouse Owner Messages {% endblock title%}
+</title> {% block content %}
+<div class="row">
+    <div class="col-md-10">
+
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="#">Warehouse</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Messages</li>
+            </ol>
+        </nav>
+
+    </div>
+    <div class="col-md-10">
+
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="{% url 'new-message' %}">Send Message</a></li>
+            </ol>
+        </nav>
+
+    </div>
+</div>
+<div class="row">
+    <div class="col-12"></div>
+        <table class="table">
+            <thead>
+                <th>Sender</th>
+                <th>Recepient</th>
+                <th>Message</th>
+                <th>Date</th>
+            </thead>
+            <tbody>
+                {% for message in communications %}
+                <tr>
+                    <td>{{message.wh_owner_id}}</td>
+                    <td>{{message.farmer_id}}</td>
+                    <td>{{message.message}}</td>
+                    <td>{{message.created_date}}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        
+    </div>
+</div>
+
+
+    </div>
+{% endblock %}

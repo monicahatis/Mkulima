@@ -1,0 +1,35 @@
+
+{% block content %}
+
+<div class="row">
+    <a class="btn btn-info" href="{% url 'save' %}">New Warehouse</a>
+    <div class="card pb-100">
+        <div class="card-header text-center"><h4>My Warehouse</h4></div>
+        <div class="card-body">
+            {% for warehouse in warehouses %}
+            <div class="col-md-12">
+                <div class="col-md-4">
+                    <img src="{{warehouse.image.url}}" class="img"></img>
+                </div>
+                <div class="col-md-8">
+                    <p>Name: {{warehouse.warehousename}}</P>
+                    <p>Description: {{warehouse.description}}</P>
+                    <p>Description: {{warehouse.location}}</P>
+                    <p>Quantity: {{warehouse.capacity}}</P>
+                    <p>Price: {{warehouse.storagefee}}</P>
+                    <p>Category: {{warehouse.contacts}}</P>
+                </div>
+
+            </div>
+             <div class="row">
+            <div class="col-sm-2">
+              <a href="{% url 'edit_warehouse' warehouse.id %}"><button class="btn btn-outline-dark">Details</button></a>
+            </div>
+          
+          </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+{% endblock %}

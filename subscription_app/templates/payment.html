@@ -1,0 +1,117 @@
+{% extends 'users/base.html' %}
+
+<title>{% block title %}Payment{% endblock title%}</title>
+
+{% block content %}
+
+<div class="row">
+    <div class="col-md-10">
+
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="{% url 'home' %}">Home</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Payment</li>
+            </ol>
+        </nav>
+
+    </div>
+</div>
+
+<div class="row mt-3 mr-2">
+    <div class="col-md-8">
+        <form action="{% url 'confirmation' %}" method="post">
+            {% csrf_token %}
+            <div class="row">
+                <div class="col--2">
+                    <label for="TotalAmount">AMOUNT:</label>
+                </div><br><br>
+                <div class="col-8">
+                    <input type="number" id="TotalAmount" class="form-control" name="TotalAmount" value="{{subscription.TotalAmount}}"><br><br>
+                </div>
+            </div>
+
+            <input type="hidden" id="Subscription_id" name="Subscription_id" value="{{subscription.id}}">
+            <input type="hidden" id="User_id" name="User_id" value="1">
+            <input type="submit" value="Submit" class="btn btn-outline-dark btn-sm">
+        </form>
+    </div>
+</div>
+
+
+
+
+
+{% endblock content %}
+
+
+
+
+
+
+
+
+
+
+<div class="row m-2">
+    {% for o in object%}
+
+    <div class="col-md-2 col-sm-6 col-xm-6">
+        <div class="card p-2 text-light bg-dark">
+
+            <div class="row"><b>{{o.SubscriptionType}} </b></div>
+            <p>PRICE(KES):{{o.TotalAmount}}</p>
+            <p>MONTHS:{{o.NumberofDuration}}<br>
+                <p>{{o.description}}</p>
+
+                <div class="row">
+                    <div class="col-sm-2">
+                        <a href="pay/{{ o.id }}"><button class="btn btn-outline-light">Subscribe</button></a>
+                    </div>
+                </div>
+        </div>
+    </div>
+
+
+    {% endfor %}
+
+</div>
+
+
+
+<!--[if lt IE 7]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+
+<script src="" async defer></script>
+</body>
+
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+Package Payment </h1>
+
+<form action="/confirmation" method="post">
+    {% csrf_token %}
+    <div class="row">
+        <div class="col-xm-2 col-sm-2 col-md-2 col-lg-2">
+            <label for="TotalAmount">AMOUNT:</label>
+        </div><br><br>
+        <div class="col-xm-8 col-sm-8 col-md-8">
+            <input type="number" id="TotalAmount" class="form-control" name="TotalAmount" value="{{subscription.TotalAmount}}"><br><br>
+        </div>
+    </div>
+
+    <input type="hidden" id="Subscription_id" name="Subscription_id" value="{{subscription.id}}">
+    <input type="hidden" id="User_id" name="User_id" value="1">
+    <input type="submit" value="Submit" class="btn btn-outline-dark">
+</form>
